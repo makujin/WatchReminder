@@ -245,11 +245,11 @@
 }
 
     .navmenu-default .navmenu-brand, .navbar-default .navbar-offcanvas .navmenu-brand {
-        color: #777;
+        color: #2375cf;      
     }
-
+    /*наведение на название*/
         .navmenu-default .navmenu-brand:hover, .navbar-default .navbar-offcanvas .navmenu-brand:hover, .navmenu-default .navmenu-brand:focus, .navbar-default .navbar-offcanvas .navmenu-brand:focus {
-            color: #5e5e5e;
+            color: #777;
             background-color: transparent;
         }
 
@@ -262,11 +262,20 @@
         border-bottom-color: #333;
     }
 
-    .navmenu-default .navmenu-nav > .open > a, .navbar-default .navbar-offcanvas .navmenu-nav > .open > a, .navmenu-default .navmenu-nav > .open > a:hover, .navbar-default .navbar-offcanvas .navmenu-nav > .open > a:hover, .navmenu-default .navmenu-nav > .open > a:focus, .navbar-default .navbar-offcanvas .navmenu-nav > .open > a:focus {
-        background-color: #e7e7e7;
-        color: #555;
+/*членотень*/
+    .navmenu-default .navmenu-nav > .open > .watching, .navbar-default .navbar-offcanvas .navmenu-nav > .open > .watching, .navmenu-default .navmenu-nav > .open > .watching:hover, .navbar-default .navbar-offcanvas .navmenu-nav > .open > .watching:hover, .navmenu-default .navmenu-nav > .open > .watching:focus, .navbar-default .navbar-offcanvas .navmenu-nav > .open > .watching:focus {
+        background-color: #20a500;
+        color: #f8f8f8;
     }
-
+          .navmenu-default .navmenu-nav > .open > .to-watch, .navbar-default .navbar-offcanvas .navmenu-nav > .open > .to-watch, .navmenu-default .navmenu-nav > .open > .to-watch:hover, .navbar-default .navbar-offcanvas .navmenu-nav > .open > .to-watch:hover, .navmenu-default .navmenu-nav > .open > .to-watch:focus, .navbar-default .navbar-offcanvas .navmenu-nav > .open > .to-watch:focus {
+        background-color: #edb033;
+        color: #f8f8f8;
+    }
+        .navmenu-default .navmenu-nav > .open > .watched, .navbar-default .navbar-offcanvas .navmenu-nav > .open > .watched, .navmenu-default .navmenu-nav > .open > .watched:hover, .navbar-default .navbar-offcanvas .navmenu-nav > .open > .watched:hover, .navmenu-default .navmenu-nav > .open > .watched:focus, .navbar-default .navbar-offcanvas .navmenu-nav > .open > .watched:focus {
+        background-color: #b5b5b5;
+        color: #f8f8f8;
+    }
+/*членотень*/
         .navmenu-default .navmenu-nav > .open > a .caret, .navbar-default .navbar-offcanvas .navmenu-nav > .open > a .caret, .navmenu-default .navmenu-nav > .open > a:hover .caret, .navbar-default .navbar-offcanvas .navmenu-nav > .open > a:hover .caret, .navmenu-default .navmenu-nav > .open > a:focus .caret, .navbar-default .navbar-offcanvas .navmenu-nav > .open > a:focus .caret {
             border-top-color: #555;
             border-bottom-color: #555;
@@ -290,14 +299,49 @@
         }
 
     .navmenu-default .navmenu-nav > li > a, .navbar-default .navbar-offcanvas .navmenu-nav > li > a {
-        color: #777;
+        color: #555;
+        background-color: #EEE;
     }
-
-        .navmenu-default .navmenu-nav > li > a:hover, .navbar-default .navbar-offcanvas .navmenu-nav > li > a:hover, .navmenu-default .navmenu-nav > li > a:focus, .navbar-default .navbar-offcanvas .navmenu-nav > li > a:focus {
-            color: #333;
-            background-color: transparent;
+/*анусень*/
+    .navmenu-default .navmenu-nav > li  > .watching-genre > li > a:hover, .navbar-default .navbar-offcanvas .navmenu-nav > li > .watching-genre > li > a:hover, .navmenu-default .navmenu-nav > li > .watching-genre > li > a:focus, .navbar-default .navbar-offcanvas .navmenu-nav > li > .watching-genre >  li >a:focus {
+            color: #f8f8f8;
+            background-color: #20a500;
+        }
+    .navmenu-default .navmenu-nav > li  > .to-watch-genre > li > a:hover, .navbar-default .navbar-offcanvas .navmenu-nav > li > .to-watch-genre > li > a:hover, .navmenu-default .navmenu-nav > li > .to-watch-genre > li > a:focus, .navbar-default .navbar-offcanvas .navmenu-nav > li > .to-watch-genre >  li >a:focus {
+            color: #f8f8f8;
+            background-color: #edb033;
+        }
+    .navmenu-default .navmenu-nav > li  > .watched-genre > li > a:hover, .navbar-default .navbar-offcanvas .navmenu-nav > li > .watched-genre > li > a:hover, .navmenu-default .navmenu-nav > li > .watched-genre > li > a:focus, .navbar-default .navbar-offcanvas .navmenu-nav > li > .watched-genre >  li >a:focus {
+            color: #f8f8f8;
+            background-color: #b5b5b5;
         }
 
+     .navmenu-default .navmenu-nav > li  > .watching-genre > li > a, .navbar-default .navbar-offcanvas .navmenu-nav > li > .watching-genre > li > a, .navmenu-default .navmenu-nav > li > .watching-genre > li > a, .navbar-default .navbar-offcanvas .navmenu-nav > li > .watching-genre >  li >a {
+            color: #f8f8f8;
+            background-color: #73AD21;
+        }
+    .navmenu-default .navmenu-nav > li  > .to-watch-genre > li > a, .navbar-default .navbar-offcanvas .navmenu-nav > li > .to-watch-genre > li > a, .navmenu-default .navmenu-nav > li > .to-watch-genre > li > a, .navbar-default .navbar-offcanvas .navmenu-nav > li > .to-watch-genre >  li >a {
+            color: #f8f8f8;
+            background-color: #e19f02;
+        }
+    .navmenu-default .navmenu-nav > li  > .watched-genre > li > a, .navbar-default .navbar-offcanvas .navmenu-nav > li > .watched-genre > li > a, .navmenu-default .navmenu-nav > li > .watched-genre > li > a, .navbar-default .navbar-offcanvas .navmenu-nav > li > .watched-genre >  li >a {
+            color: #f8f8f8;
+            background-color: #7e7e7e;
+        }
+
+        .navmenu-default .navmenu-nav > li > .watching:hover, .navbar-default .navbar-offcanvas .navmenu-nav > li > .watching:hover, .navmenu-default .navmenu-nav > li > .watching:focus, .navbar-default .navbar-offcanvas .navmenu-nav > li > .watching:focus {
+            color: #f8f8f8;
+            background-color: #73AD21;
+        }
+        .navmenu-default .navmenu-nav > li > .to-watch:hover, .navbar-default .navbar-offcanvas .navmenu-nav > li > .to-watch:hover, .navmenu-default .navmenu-nav > li > .to-watch:focus, .navbar-default .navbar-offcanvas .navmenu-nav > li > .to-watch:focus {
+            color: #f8f8f8;
+            background-color: #e19f02;
+        }
+        .navmenu-default .navmenu-nav > li > .watched:hover, .navbar-default .navbar-offcanvas .navmenu-nav > li > .watched:hover, .navmenu-default .navmenu-nav > li > .watched:focus, .navbar-default .navbar-offcanvas .navmenu-nav > li > .watched:focus {
+            color: #f8f8f8;
+            background-color: #7e7e7e;
+        }
+/*анусень*/
     .navmenu-default .navmenu-nav > .active > a, .navbar-default .navbar-offcanvas .navmenu-nav > .active > a, .navmenu-default .navmenu-nav > .active > a:hover, .navbar-default .navbar-offcanvas .navmenu-nav > .active > a:hover, .navmenu-default .navmenu-nav > .active > a:focus, .navbar-default .navbar-offcanvas .navmenu-nav > .active > a:focus {
         color: #555;
         background-color: #e7e7e7;
@@ -386,7 +430,7 @@
     left: 0;
 }
 
-@media (min-width:992px) {
+/*@media (min-width:992px) {
     .alert-fixed-top, .alert-fixed-bottom {
         width: 992px;
         left: 50%;
@@ -418,7 +462,7 @@
         border-top-left-radius: 4px;
         border-width: 1px 1px 0;
     }
-}
+}*/
 
 .offcanvas {
     display: none;
