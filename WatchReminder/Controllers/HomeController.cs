@@ -10,7 +10,13 @@ namespace WatchReminder.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            Random rd = new Random();
+            List<string[]> MyList = new List<string[]>();        
+            for(int i=0; i<20; i++)
+            {
+                MyList.Add(new []{"Аниме номер " + i.ToString(), (i!=rd.Next(0,20))? "Это крутая анимешечка.":"Люблю Вофку"});
+            }
+            return View(MyList);
         }
 
         public ActionResult About()

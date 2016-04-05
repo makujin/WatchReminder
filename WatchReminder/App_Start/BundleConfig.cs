@@ -9,7 +9,8 @@ namespace WatchReminder
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-1.10.2.js",
+                        /*"~/Scripts/jquery-1.10.2.js",*/
+                    
                         "~/Scripts/jquery-1.10.2.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
@@ -21,7 +22,7 @@ namespace WatchReminder
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                   
+                  
                 "~/Scripts/bootstrap.min.js",
                       "~/Scripts/jasny-bootstrap.min.js"));
 
