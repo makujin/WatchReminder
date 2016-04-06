@@ -52,6 +52,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -174,8 +176,35 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Film.cs">
+      <DependentUpon>filmsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\filmsModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>filmsModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\filmsModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>filmsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\filmsModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>filmsModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Genre.cs">
+      <DependentUpon>filmsModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Tag.cs">
+      <DependentUpon>filmsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\URLs_film.cs">
+      <DependentUpon>filmsModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -215,7 +244,24 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\jasny-bootstrap.css.map" />
+    <EntityDeploy Include="Models\filmsModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>filmsModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\filmsModel.edmx.diagram">
+      <DependentUpon>filmsModel.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Models\filmsModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>filmsModel.edmx</DependentUpon>
+      <LastGenOutput>filmsModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\filmsModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>filmsModel.edmx</DependentUpon>
+      <LastGenOutput>filmsModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jasny-bootstrap.js" />
@@ -273,6 +319,9 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

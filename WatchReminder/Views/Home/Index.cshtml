@@ -1,8 +1,32 @@
-﻿@{
+﻿@model IEnumerable<WatchReminder.Models.Film>
+@{
     ViewBag.Title = "Home Page";
 }
 
-<div>
-    <h1>ASP.NET</h1>
-    <p >ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>  
+<div class="panel-group" id="accordion">
+    @{
+        int count = 1;
+        foreach (var Item in Model)
+        {
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" @Html.Raw(string.Format("href=\"#collapse{0}\"", @count.ToString()))>
+                        @Html.Raw(string.Format("{0} / {1} ", Item.Name, Item.Name_translated))
+                        </a>
+                    </h4>
+                </div>
+                <div @Html.Raw(string.Format("id=\"collapse{0}\"", @count.ToString())) class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <p><b>Год: </b>@Item.Year</p>
+                        <p><b>Рейтинг: </b>@Item.Rating</p>
+                        <p>@Item.Note</p>
+                    </div>
+                </div>
+            </div>
+            count++;
+        }
+    }
 </div>
+
+

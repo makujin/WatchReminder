@@ -8,15 +8,12 @@ namespace WatchReminder.Controllers
 {
     public class HomeController : Controller
     {
+        Models.WatchReminderEntities bd = new Models.WatchReminderEntities();
+
         public ActionResult Index()
         {
-            Random rd = new Random();
-            List<string[]> MyList = new List<string[]>();        
-            for(int i=0; i<20; i++)
-            {
-                MyList.Add(new []{"Аниме номер " + i.ToString(), (i!=rd.Next(0,20))? "Это крутая анимешечка.":"Люблю Вофку"});
-            }
-            return View(MyList);
+            var listFilms = bd.Films;
+            return View(listFilms);
         }
 
         public ActionResult About()
