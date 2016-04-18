@@ -1,8 +1,87 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@model IEnumerable<WatchReminder.Models.Film>
+@{
+    ViewBag.Title = "Список";
 }
 
-<div>
-    <h1>ASP.NET</h1>
-    <p >ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>  
+
+<div class="panel-group" id="accordion">
+    <div class="panel panel-default">
+        <div class="panel-heading add-button" data-toggle="collapse" data-parent="#accordion" data-target="#add-form">
+            <h4 class="panel-title">
+                <a class="accordion-toggle">
+                    <span class="glyphicon glyphicon-plus"></span> Добавить
+                </a>
+            </h4>
+        </div>
+        <div id="add-form" class="panel-collapse collapse">
+            <form class="form-inline in-add-forms" role="form">
+                <div class="form-group inline-form">
+                    <label class="sr-only" for="original-name">Оригинальное название</label>
+                    <input type="text" class="form-control" id="original-name"  placeholder="Оригинальное название">
+                </div>
+
+                <div class="form-group inline-form">
+                    <label class="sr-only" for="name">Название</label>
+                    <input type="text" class="form-control" id="name" placeholder="Название">
+                </div>               
+            </form>
+
+            <form class="form-inline in-add-forms" role="form">
+                <div class="form-group">
+                    <label class="sr-only" for="genre">Жанр</label>
+                    <input type="text" class="form-control" id="genre" placeholder="Жанр">
+                </div>
+                <div class="form-group">
+                    <label class="sr-only" for="year">Год</label>
+                    <input type="text" class="form-control" placeholder="Год">
+                </div>   
+            </form>
+            <form role="form">
+                <div class="form-group in-add-forms">
+                    <label class="sr-only" for="note">Заметка</label>
+                    <textarea class="form-control" rows="2"  placeholder="Заметка"></textarea>
+                </div>
+                <div class="form-group in-add-forms">
+                    <label class="sr-only" for="url">Ссылка</label>
+                    <input type="text" class="form-control" id="url" placeholder="Ссылка">
+                </div>
+            </form>
+            <button type="submit" class="btn btn-default" style="margin-bottom: 10px">
+             <span class="glyphicon glyphicon-ok"></span> Ок
+            </button>
+        </div>     
+    </div>
+
+    @{
+        int count = 1;
+        foreach (var Item in Model)
+        {
+            <div class="panel panel-default" >
+                <div class="panel-heading"  data-toggle="collapse" data-parent="#accordion" @Html.Raw(string.Format("data-target=\"#collapse{0}\"", @count.ToString()))>
+                    <h4 class="panel-title">
+                        <a class="accordion-toggle">
+                            <span class="glyphicon glyphicon-triangle-bottom"></span> @Html.Raw(string.Format("{0} / {1} ", Item.Name, Item.Name_translated))
+                        </a>
+                    </h4>
+                </div>
+                <div @Html.Raw(string.Format("id=\"collapse{0}\"", @count.ToString())) class="panel-collapse collapse">
+                    <div class="panel-body">
+                        @if (Item.Year != null)
+                        {
+                            <p><b>Год: </b>@Item.Year</p>
+                        }
+                        @if (Item.Rating != null)
+                        {
+                            <p><b>Рейтинг: </b>@Item.Rating</p>
+                        }
+                        @if (Item.Note != null)
+                        {
+                            <p>@Item.Note</p>
+                        }
+                    </div>
+                </div>
+            </div>
+            count++;
+        }
+    }
 </div>

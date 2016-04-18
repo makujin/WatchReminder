@@ -11,21 +11,77 @@ body {
   margin-left: 15px;
 }
 
+.list-strips > li{
+    color: #000;
+    background-color: #21c336;
+    list-style: none;
+}
+
+.panel-default{
+   margin-top:5px;
+}
+
+
+.panel-default > #add-form
+{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.panel-default > #add-form > .form-inline > .inline-form
+{
+    width: 49%;
+}
+
+/*.panel-default > #add-form > .form-inline:nth-child(1){
+    margin-right: 10px;
+}
+.panel-default > #add-form > .form-inline:nth-child(1){
+    margin-left: 10px;
+}*/
+.in-add-forms{
+    margin-top: 10px;
+}
+
+.panel-default > #add-form > .form-inline > .inline-form > input
+{
+    width: 100%;    
+}
+
+
+.panel-default > .panel-heading {
+    cursor: pointer;
+}
+
+.panel-default > .add-button{
+
+    text-align: center;
+    color: white;
+    background-color: #33bb43;
+}
+.top-buttons{
+    margin-left: 20px;
+    margin-top: 8px;
+}
 
 @media (min-width: 0) {
   .navbar-toggle {
     display: block; /* force showing the toggle */
   }
 }
-
+.search-dropdown{
+        min-width: 460px;
+        padding: 0;
+        border: none;
+}
 
 @media (min-width: 992px) {
   body {
-    padding: 0;
+    padding: 50px;
   }
   .navbar {
-    right: auto;
+    /*right: auto;
     background: none;
-    border: none;
+    border: none;*/
   }
 }
+

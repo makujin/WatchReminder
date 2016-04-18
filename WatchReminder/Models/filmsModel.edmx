@@ -1,0 +1,315 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище WatchReminderModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Films">
+          <Key>
+            <PropertyRef Name="ID_film" />
+          </Key>
+          <Property Name="ID_film" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Year" Type="int" />
+          <Property Name="Rating" Type="float" />
+          <Property Name="Count_series" Type="int" />
+          <Property Name="Note" Type="nvarchar" MaxLength="150" />
+          <Property Name="Name_translated" Type="nvarchar" MaxLength="150" />
+          <Property Name="Status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Films_Genres">
+          <Key>
+            <PropertyRef Name="ID_film" />
+            <PropertyRef Name="ID_genre" />
+          </Key>
+          <Property Name="ID_film" Type="int" Nullable="false" />
+          <Property Name="ID_genre" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Films_Tags">
+          <Key>
+            <PropertyRef Name="ID_film" />
+            <PropertyRef Name="ID_tag" />
+          </Key>
+          <Property Name="ID_film" Type="int" Nullable="false" />
+          <Property Name="ID_tag" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Genres">
+          <Key>
+            <PropertyRef Name="ID_genre" />
+          </Key>
+          <Property Name="ID_genre" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="Tags">
+          <Key>
+            <PropertyRef Name="ID_tag" />
+          </Key>
+          <Property Name="ID_tag" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="URLs_film">
+          <Key>
+            <PropertyRef Name="ID_URL" />
+          </Key>
+          <Property Name="ID_URL" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_film" Type="int" Nullable="false" />
+          <Property Name="URL" Type="text" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Films_Genres_ToFilms">
+          <End Role="Films" Type="Self.Films" Multiplicity="1" />
+          <End Role="Films_Genres" Type="Self.Films_Genres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Films">
+              <PropertyRef Name="ID_film" />
+            </Principal>
+            <Dependent Role="Films_Genres">
+              <PropertyRef Name="ID_film" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Films_Genres_ToGenres">
+          <End Role="Genres" Type="Self.Genres" Multiplicity="1" />
+          <End Role="Films_Genres" Type="Self.Films_Genres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genres">
+              <PropertyRef Name="ID_genre" />
+            </Principal>
+            <Dependent Role="Films_Genres">
+              <PropertyRef Name="ID_genre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fimls_Tags_ToFilms">
+          <End Role="Films" Type="Self.Films" Multiplicity="1" />
+          <End Role="Films_Tags" Type="Self.Films_Tags" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Films">
+              <PropertyRef Name="ID_film" />
+            </Principal>
+            <Dependent Role="Films_Tags">
+              <PropertyRef Name="ID_film" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fimls_Tags_ToTags">
+          <End Role="Tags" Type="Self.Tags" Multiplicity="1" />
+          <End Role="Films_Tags" Type="Self.Films_Tags" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tags">
+              <PropertyRef Name="ID_tag" />
+            </Principal>
+            <Dependent Role="Films_Tags">
+              <PropertyRef Name="ID_tag" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_URLs_film_ToFilms">
+          <End Role="Films" Type="Self.Films" Multiplicity="1" />
+          <End Role="URLs_film" Type="Self.URLs_film" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Films">
+              <PropertyRef Name="ID_film" />
+            </Principal>
+            <Dependent Role="URLs_film">
+              <PropertyRef Name="ID_film" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище WatchReminderModelContainer">
+          <EntitySet Name="Films" EntityType="Self.Films" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Films_Genres" EntityType="Self.Films_Genres" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Films_Tags" EntityType="Self.Films_Tags" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Genres" EntityType="Self.Genres" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tags" EntityType="Self.Tags" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="URLs_film" EntityType="Self.URLs_film" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Films_Genres_ToFilms" Association="Self.FK_Films_Genres_ToFilms">
+            <End Role="Films" EntitySet="Films" />
+            <End Role="Films_Genres" EntitySet="Films_Genres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Films_Genres_ToGenres" Association="Self.FK_Films_Genres_ToGenres">
+            <End Role="Genres" EntitySet="Genres" />
+            <End Role="Films_Genres" EntitySet="Films_Genres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fimls_Tags_ToFilms" Association="Self.FK_Fimls_Tags_ToFilms">
+            <End Role="Films" EntitySet="Films" />
+            <End Role="Films_Tags" EntitySet="Films_Tags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fimls_Tags_ToTags" Association="Self.FK_Fimls_Tags_ToTags">
+            <End Role="Tags" EntitySet="Tags" />
+            <End Role="Films_Tags" EntitySet="Films_Tags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_URLs_film_ToFilms" Association="Self.FK_URLs_film_ToFilms">
+            <End Role="Films" EntitySet="Films" />
+            <End Role="URLs_film" EntitySet="URLs_film" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WatchReminderModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Film">
+          <Key>
+            <PropertyRef Name="ID_film" />
+          </Key>
+          <Property Name="ID_film" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Year" Type="Int32" />
+          <Property Name="Rating" Type="Double" />
+          <Property Name="Count_series" Type="Int32" />
+          <Property Name="Note" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Name_translated" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="URLs_film" Relationship="Self.FK_URLs_film_ToFilms" FromRole="Films" ToRole="URLs_film" />
+          <NavigationProperty Name="Genres" Relationship="Self.Films_Genres" FromRole="Films" ToRole="Genres" />
+          <NavigationProperty Name="Tags" Relationship="Self.Films_Tags" FromRole="Films" ToRole="Tags" />
+        </EntityType>
+        <EntityType Name="Genre">
+          <Key>
+            <PropertyRef Name="ID_genre" />
+          </Key>
+          <Property Name="ID_genre" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Films" Relationship="Self.Films_Genres" FromRole="Genres" ToRole="Films" />
+        </EntityType>
+        <EntityType Name="Tag">
+          <Key>
+            <PropertyRef Name="ID_tag" />
+          </Key>
+          <Property Name="ID_tag" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Films" Relationship="Self.Films_Tags" FromRole="Tags" ToRole="Films" />
+        </EntityType>
+        <EntityType Name="URLs_film">
+          <Key>
+            <PropertyRef Name="ID_URL" />
+          </Key>
+          <Property Name="ID_URL" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_film" Type="Int32" Nullable="false" />
+          <Property Name="URL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Film" Relationship="Self.FK_URLs_film_ToFilms" FromRole="URLs_film" ToRole="Films" />
+        </EntityType>
+        <Association Name="FK_URLs_film_ToFilms">
+          <End Role="Films" Type="Self.Film" Multiplicity="1" />
+          <End Role="URLs_film" Type="Self.URLs_film" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Films">
+              <PropertyRef Name="ID_film" />
+            </Principal>
+            <Dependent Role="URLs_film">
+              <PropertyRef Name="ID_film" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Films_Genres">
+          <End Role="Films" Type="Self.Film" Multiplicity="*" />
+          <End Role="Genres" Type="Self.Genre" Multiplicity="*" />
+        </Association>
+        <Association Name="Films_Tags">
+          <End Role="Films" Type="Self.Film" Multiplicity="*" />
+          <End Role="Tags" Type="Self.Tag" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="WatchReminderEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Films" EntityType="Self.Film" />
+          <EntitySet Name="Genres" EntityType="Self.Genre" />
+          <EntitySet Name="Tags" EntityType="Self.Tag" />
+          <EntitySet Name="URLs_film" EntityType="Self.URLs_film" />
+          <AssociationSet Name="FK_URLs_film_ToFilms" Association="Self.FK_URLs_film_ToFilms">
+            <End Role="Films" EntitySet="Films" />
+            <End Role="URLs_film" EntitySet="URLs_film" />
+          </AssociationSet>
+          <AssociationSet Name="Films_Genres" Association="Self.Films_Genres">
+            <End Role="Films" EntitySet="Films" />
+            <End Role="Genres" EntitySet="Genres" />
+          </AssociationSet>
+          <AssociationSet Name="Films_Tags" Association="Self.Films_Tags">
+            <End Role="Films" EntitySet="Films" />
+            <End Role="Tags" EntitySet="Tags" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище WatchReminderModelContainer" CdmEntityContainer="WatchReminderEntities">
+          <EntitySetMapping Name="Films">
+            <EntityTypeMapping TypeName="WatchReminderModel.Film">
+              <MappingFragment StoreEntitySet="Films">
+                <ScalarProperty Name="ID_film" ColumnName="ID_film" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="Count_series" ColumnName="Count_series" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="Name_translated" ColumnName="Name_translated" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Genres">
+            <EntityTypeMapping TypeName="WatchReminderModel.Genre">
+              <MappingFragment StoreEntitySet="Genres">
+                <ScalarProperty Name="ID_genre" ColumnName="ID_genre" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tags">
+            <EntityTypeMapping TypeName="WatchReminderModel.Tag">
+              <MappingFragment StoreEntitySet="Tags">
+                <ScalarProperty Name="ID_tag" ColumnName="ID_tag" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="URLs_film">
+            <EntityTypeMapping TypeName="WatchReminderModel.URLs_film">
+              <MappingFragment StoreEntitySet="URLs_film">
+                <ScalarProperty Name="ID_URL" ColumnName="ID_URL" />
+                <ScalarProperty Name="ID_film" ColumnName="ID_film" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="Films_Genres" TypeName="WatchReminderModel.Films_Genres" StoreEntitySet="Films_Genres">
+            <EndProperty Name="Films">
+              <ScalarProperty Name="ID_film" ColumnName="ID_film" />
+            </EndProperty>
+            <EndProperty Name="Genres">
+              <ScalarProperty Name="ID_genre" ColumnName="ID_genre" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Films_Tags" TypeName="WatchReminderModel.Films_Tags" StoreEntitySet="Films_Tags">
+            <EndProperty Name="Films">
+              <ScalarProperty Name="ID_film" ColumnName="ID_film" />
+            </EndProperty>
+            <EndProperty Name="Tags">
+              <ScalarProperty Name="ID_tag" ColumnName="ID_tag" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
