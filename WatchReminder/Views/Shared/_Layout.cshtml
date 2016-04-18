@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Off Canvas Reveal Menu Template for Bootstrap</title>
+    <title>Watch Reminder - твой персональный список</title>
 
     @Styles.Render("~/Content/css")
 
@@ -15,24 +15,22 @@
 <body>
 
 <div class="navmenu navmenu-default navmenu-fixed-left offcanvas">
-    <a class="navmenu-brand" href="#">Project name</a>
-  
-
+    <a class="navmenu-brand" href="/home">Watch Reminder</a>
     <ul class="nav navmenu-nav">
-        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Смотрю</a>
-            <ul class="dropdown-menu navmenu-nav">
+        <li class="dropdown"><a href="#" class="dropdown-toggle watching" data-toggle="dropdown">Смотрю</a>
+            <ul class="dropdown-menu navmenu-nav watching-genre">
                 <li><a href="#">Все</a></li>
                 <li><a href="#">Комедия</a></li>
                 <li><a href="#">Драма</a></li>
             </ul></li>
-        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Посмотреть</a>
-            <ul class="dropdown-menu navmenu-nav">
+        <li class="dropdown"><a href="#" class="dropdown-toggle to-watch" data-toggle="dropdown">Посмотреть</a>
+            <ul class="dropdown-menu navmenu-nav to-watch-genre">
                 <li><a href="#">Все</a></li>
                 <li><a href="#">Комедия</a></li>
                 <li><a href="#">Драма</a></li>
             </ul></li>
-        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Просмотренно</a>
-            <ul class="dropdown-menu navmenu-nav">
+        <li class="dropdown"><a href="#" class="dropdown-toggle watched" data-toggle="dropdown">Просмотренно</a>
+            <ul class="dropdown-menu navmenu-nav watched-genre">
                 <li><a href="#">Все</a></li>
                 <li><a href="#">Комедия</a></li>
                 <li><a href="#">Драма</a></li>
@@ -46,14 +44,26 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
     </button>
+
+    <div class="btn-group top-buttons">
+        <div class="btn-group">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <span class="glyphicon glyphicon-search"></span>
+            </button>
+            <ul class="dropdown-menu search-dropdown" role="form">
+                <li><input type="text" class="form-control input-xs" id="search-church" placeholder="Названия, жанры..."></li>    
+            </ul>
+        </div>
+        <button type="button" class="btn btn-info">Мой топ </button>
+        <button type="button" class="btn btn-info">Имя</button>
+        <button type="button" class="btn btn-info">Дата просмотра</button>
+    </div>
 </div>
 
 <div class="container">
   
     @RenderBody()
-    <p class="lead">This example demonstrates the use of the offcanvas plugin with a push effect.</p>
-    <p>You get the push effect by setting the <code>canvas</code> option to 'body'.</p>
-    <p>Also take a look at the example for a navmenu with <a href="../navmenu">slide in effect</a> and <a href="../navmenu-reveal">reveal effect</a>.</p>
+   
 </div><!-- /.container -->
 <!-- Bootstrap core JavaScript
 ================================================== -->
